@@ -24,16 +24,25 @@ while runmanager == 1:
         print("\033c", end="")
         p_primeiro = int(input("Qual é o número do primeiro ponto?\n")) #escolhendo os pontos em que sera criado uma conexao
         p_segundo = int(input("Qual é o número do segundo ponto?\n"))
-        if p_primeiro in lista_de_conexoes[p_segundo]:
-            print("Conexão já existe!")                   #OBS: assumi que a relacao de conexao é reflexiva, ou seja, todo ponto
-        else:                                             # A que conecte com B, B também conecta com A              
-            lista_de_conexoes[p_primeiro].append(p_segundo)
-            lista_de_conexoes[p_segundo].append(p_primeiro) #propriedade reflexiva
-            print(lista_de_conexoes)
+        if p_primeiro > num_de_pontos or p_primeiro < 0 or p_segundo > num_de_pontos or p_primeiro < 0:
+            print("Digite um índice válido.")
+        else:
+            if p_primeiro in lista_de_conexoes[p_segundo]:
+                print("Conexão já existe!")                   #OBS: assumi que a relacao de conexao é reflexiva, ou seja, todo ponto
+            else:                                             # A que conecte com B, B também conecta com A              
+                lista_de_conexoes[p_primeiro].append(p_segundo)
+                lista_de_conexoes[p_segundo].append(p_primeiro) #propriedade reflexiva
+                print(lista_de_conexoes)
 
     elif escolha == "2":
         print("\033c", end="")
-        print("Qual método de busca você quer utilizar?\n")
+        p1 = int(input("Qual é o ponto de origem?\n"))
+        p2 = int(input("Qual é o ponto final?\n"))
+        caminho = gf.Depth_first_search(p1,p2,lista_de_conexoes)
+        if caminho == None:
+            print("Caminho inexistente!")
+        else:
+            print(f"O de {p1} até {p2} é: {caminho}")
 
     elif escolha == "3":
         print("\033c", end="")
@@ -43,7 +52,7 @@ while runmanager == 1:
     elif escolha == "4":
         print("\033c", end="")
         ponto = int(input("De qual ponto você deseja saber as conexões?\n"))
-        print(lista_de_conexoes[ponto])
+        print(f"As conexões são: {lista_de_conexoes[ponto]}")
 
     elif escolha == "5":
         print("\033c", end="")
@@ -52,9 +61,3 @@ while runmanager == 1:
     else:
         print("\033c", end="")
         print("Opção Inválida.")
-
-
-
-#https://medium.com/pythoneers/master-the-art-of-graphs-implementation-in-python-5f49ec9ba42b
-#https://www.w3schools.com/python/python_dsa_graphs.asp
-#https://www.youtube.com/watch?v=rHemTXFJIPM
