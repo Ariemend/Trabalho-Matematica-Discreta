@@ -13,7 +13,6 @@ for i in range(num_de_pontos):
 lista_de_vertices = dict(enumerate(lista_de_pontos,0))  #por uma lista contendo 2 elementos.
 
 
-
 runmanager = 1
 while runmanager == 1:
     print("Qual operação você deseja realizar?")
@@ -31,7 +30,7 @@ while runmanager == 1:
                 print("Conexão já existe!")                   #OBS: assumi que a relacao de conexao é reflexiva, ou seja, todo ponto
             else:                                             # A que conecte com B, B também conecta com A              
                 lista_de_conexoes[p_primeiro].append(p_segundo)
-                lista_de_conexoes[p_segundo].append(p_primeiro) #propriedade reflexiva
+                lista_de_conexoes[p_segundo].append(p_primeiro) #propriedade simetrica
                 print(lista_de_conexoes)
 
     elif escolha == "2":
