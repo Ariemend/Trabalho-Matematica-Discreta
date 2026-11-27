@@ -33,7 +33,6 @@ while runmanager == 1:
                         pass            #inserindo as conexões nas listas
                     else:
                         lista_de_conexoes[i].append(j)
-            print(lista_de_conexoes)
         elif opcao1 == 2:
             p_primeiro = int(input("Qual é o número do primeiro ponto?\n")) #escolhendo os pontos em que sera criado uma conexao
             p_segundo = int(input("Qual é o número do segundo ponto?\n"))
@@ -46,7 +45,6 @@ while runmanager == 1:
             else:                                                                                   
                 lista_de_conexoes[p_primeiro].append(p_segundo)
                 lista_de_conexoes[p_segundo].append(p_primeiro) #propriedade simetrica
-            print(lista_de_conexoes)
         elif opcao1 == 3:
                 p_apagar = int(input("De qual ponto você deseja apagar as conexões?\n"))
                 lista_de_conexoes[p_apagar].clear() # Apaga todas as conexões de um ponto
