@@ -24,3 +24,6 @@ automaticamente a complexidade do problema, e exibe ao usuário antes de aprense
 ## Menus complementares
 Os outros menus servem apenas para permitir que o usuário veja o estado em que o programa está naquele momento, além de contextualizar em algumas
 informações, como distância.
+
+## Como Rodar
+O programa pode ser acessado rodando o arquivo "main.py".
