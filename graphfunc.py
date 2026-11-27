@@ -1,22 +1,26 @@
 import math
+import time
 
-def todos_os_caminhos(p_inicial, p_final, lista_conexoes):
+def caminhos_limitados(p_inicial, p_final, lista_conexoes, n_cidades):
     caminhos = []
     caminho = [p_inicial]
-    visitados = {p_inicial}
+    visitados = {p_inicial}  
 
     def dfs(ponto):
+        #se já passou do limite, não adianta continuar
+        if len(caminho) > n_cidades:
+            return
         if ponto == p_final:
-            caminhos.append(caminho.copy())
+            if len(caminho) == n_cidades:   # só aceita se tiver exatamente n cidades
+                caminhos.append(caminho.copy())
             return
         for vizinho in lista_conexoes[ponto]:
             if vizinho not in visitados:
                 visitados.add(vizinho)
                 caminho.append(vizinho)
                 dfs(vizinho)
-                caminho.pop()            # desfaz o passo
-                visitados.remove(vizinho)  # libera o ponto para outros caminhos
-
+                caminho.pop()
+                visitados.remove(vizinho)
     dfs(p_inicial)
     return caminhos
 
@@ -38,3 +42,15 @@ def Matriz_Distancias(num_de_pontos,lista_de_vertices):
 def comprimento(caminho, lista_vertices):
     return round(sum(Distancia_Euclidiana(lista_vertices, a, b)
                      for a, b in zip(caminho, caminho[1:])), 2)
+
+def calculo_combinacao(qtd_pontos, p_inicial, lista_conexoes):
+    lista = []
+    j = 0
+    for i in lista_conexoes[p_inicial]:
+        j += 1
+        lista.append(j)
+    lista.reverse()
+    lista = lista[:qtd_pontos+1]
+    print("OBS: A operação possui complexidade:")
+    for elemento in lista:
+        print(f"{elemento}! ",end=" ")
